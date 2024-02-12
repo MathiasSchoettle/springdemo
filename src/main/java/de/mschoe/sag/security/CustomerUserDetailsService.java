@@ -35,5 +35,12 @@ public class CustomerUserDetailsService implements UserDetailsService {
     @EventListener(ApplicationReadyEvent.class)
     public void createUser() {
         createNewUser(new UserDto("admin", "admin@test.de", "admin"));
+        createNewUser(new UserDto("admin1", "admin1@test.de", "admin"));
+        createNewUser(new UserDto("admin2", "admin2@test.de", "admin"));
+        createNewUser(new UserDto("admin3", "admin3@test.de", "admin"));
+        createNewUser(new UserDto("admin4", "admin4@test.de", "admin"));
+        createNewUser(new UserDto("admin5", "admin5@test.de", "admin"));
+        createNewUser(new UserDto("admin6", "admin6@test.de", "admin"));
+        createNewUser(new UserDto("admin7", "admin7@test.de", "admin"));
     }
 }

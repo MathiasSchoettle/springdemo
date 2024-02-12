@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{main}">
+<head>
+    <title>Other</title>
+
+    <script>
+        const getData = () => {
+            fetch('other/content').then(function (response) {
+                return response.text();
+            }).then(function (html) {
+                document.getElementById("myPlaceHolder").innerHTML += html;
+            }).catch(function (err) {
+                console.warn('Something went wrong.', err);
+            });
+        }
+
+        const empty = () => {
+            console.log("ALARM");
+            document.getElementById("myPlaceHolder").innerHTML = '';
+            console.log(document.getElementById("myPlaceHolder").innerHTML);
+        }
+    </script>
+</head>
+<body layout:fragment="main">
+
+<div class="py-5 content">
+    <div class="container text-center">
+
+        <div class="d-flex justify-content-center gap-4 mb-5">
+            <input type="button" class="btn btn-primary" value="Ajax Call" onclick="getData()"/>
+            <input type="button" class="btn btn-success" value="Clear Content" onclick="empty()"/>
+        </div>
+
+        <div id="myPlaceHolder" class="d-flex flex-column align-items-center">
+
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
