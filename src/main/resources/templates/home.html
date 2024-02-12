@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link th:replace="~{fragments/bootstrap.html}">
+
+    <style>
+        .btn-bold {
+            font-size: 0.9rem;
+            letter-spacing: 0.05rem;
+        }
+    </style>
+</head>
+<body class="d-flex flex-column" style="height: 100vh">
+
+<header class="p-3 bg-secondary-subtle">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+            <a th:href="@{/}" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none mx-2">
+                <svg height="40" viewBox="0 0 16 16" width="40" style="fill: white">
+                    <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
+                </svg>
+            </a>
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="#" class="nav-link px-2 text-white text-uppercase fw-bold">Users</a></li>
+                <li><a href="#" class="nav-link px-2 text-white text-uppercase fw-bold">Promotion</a></li>
+            </ul>
+
+            <div sec:authorize="isAnonymous()" class="text-end">
+                <a th:href="@{/login}" class="btn btn-outline-light btn-bold text-uppercase fw-bold me-2">Login</a>
+                <a th:href="@{/signup}" class="btn btn-success btn-bold text-uppercase fw-bold">Sign Up</a>
+            </div>
+
+            <div sec:authorize="isAuthenticated()">
+                <div class="dropdown text-end">
+                    <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img loading="eager" src="https://github.com/mathiasschoettle.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                    </a>
+                    <ul class="dropdown-menu text-small" style="">
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <form th:action="@{/logout}" method="post">
+                                <button type="submit" class="dropdown-item">Sign Out</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="flex-grow h-100">
+
+</main>
+
+<footer class="w-100 py-4 flex-shrink-0 bg-secondary-subtle">
+    <div class="container py-2">
+        <p class="small text-muted mb-0">&copy; Copyrights. 2024</p>
+    </div>
+</footer>
+
+</body>
+</html>
