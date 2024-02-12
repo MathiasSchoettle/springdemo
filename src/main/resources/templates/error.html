@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en" data-bs-theme="dark">
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
 <head>
-    <meta charset="UTF-8">
-    <title>Error</title>
-    <link th:replace="~{fragments/bootstrap.html}">
+    <title>Oopsie!</title>
 </head>
-<body>
-
+<body layout:fragment="content">
 <main class="container vh-100 d-flex align-items-center justify-content-center">
     <div class="p-5 text-center bg-body-tertiary rounded-3 d-flex flex-column justify-content-between gap-5">
         <h1 class="text-body-emphasis">An Error occurred</h1>
@@ -20,6 +18,5 @@
         </a>
     </div>
 </main>
-
 </body>
 </html>

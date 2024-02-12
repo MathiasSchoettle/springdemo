@@ -24,6 +24,7 @@ public class SecurityConfig {
                         authorizeHttp -> authorizeHttp
                                 .requestMatchers(antMatcher("/error")).permitAll()
                                 .requestMatchers(antMatcher("/signup")).permitAll()
+                                .requestMatchers(antMatcher("/css/**")).permitAll()
                                 .requestMatchers(antMatcher("/")).permitAll()
                                 .anyRequest().authenticated()
                 )

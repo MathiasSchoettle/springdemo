@@ -1,34 +1,18 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en" data-bs-theme="dark">
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
 <head>
     <title>Sign Up</title>
-    <link th:replace="~{fragments/bootstrap.html}">
+    <style>
+        .bg-image {
+            background-image: url('https://images.pexels.com/photos/1172675/pexels-photo-1172675.jpeg');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
 </head>
 
-<style>
-    .signup {
-        min-height: 100vh;
-    }
-
-    .bg-image {
-        background-image: url('https://images.pexels.com/photos/1172675/pexels-photo-1172675.jpeg');
-        background-size: cover;
-        background-position: center;
-    }
-
-    .login-heading {
-        font-weight: 300;
-    }
-
-    .btn-login {
-        font-size: 0.9rem;
-        letter-spacing: 0.05rem;
-        padding: 0.75rem 1rem;
-    }
-</style>
-
-<body>
-
+<body layout:fragment="content">
 <main class="container-fluid ps-md-0">
     <div class="row g-0">
         <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image position-relative">
@@ -37,43 +21,54 @@
             </a>
         </div>
         <div class="col-md-8 col-lg-6 shadow-lg border-start">
-            <div class="signup d-flex align-items-center py-5 bg-secondary-subtle">
+            <div class="min-vh-100 d-flex align-items-center py-5 bg-secondary-subtle">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-9 col-lg-8 mx-auto">
 
-                            <h3 class="login-heading mb-4">Welcome!</h3>
+                            <h3 class="mb-4">Welcome!</h3>
 
                             <form th:action="@{/signup}" th:object="${user}" method="post">
 
                                 <div class="row g-3">
                                     <div class="col-md">
                                         <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" th:classappend="${#fields.hasErrors('username')} ? 'is-invalid'" id="floatingInput" placeholder="username" th:field="*{username}">
+                                            <input type="text" class="form-control"
+                                                   th:classappend="${#fields.hasErrors('username')} ? 'is-invalid'"
+                                                   id="floatingInput" placeholder="username" th:field="*{username}">
                                             <label for="floatingInput">Username</label>
-                                            <div th:if="${#fields.hasErrors('username')}" class="invalid-feedback text-capitalize" th:errors="*{username}"></div>
+                                            <div th:if="${#fields.hasErrors('username')}"
+                                                 class="invalid-feedback text-capitalize" th:errors="*{username}"></div>
                                         </div>
                                     </div>
 
                                     <div class="col-md">
                                         <div class="form-floating mb-3">
-                                            <input type="email" class="form-control" th:classappend="${#fields.hasErrors('email')} ? 'is-invalid'" id="floatingEmail" placeholder="email" th:field="*{email}">
+                                            <input type="email" class="form-control"
+                                                   th:classappend="${#fields.hasErrors('email')} ? 'is-invalid'"
+                                                   id="floatingEmail" placeholder="email" th:field="*{email}">
                                             <label for="floatingEmail">Email</label>
-                                            <div th:if="${#fields.hasErrors('email')}" class="invalid-feedback text-capitalize" th:errors="*{email}"></div>
+                                            <div th:if="${#fields.hasErrors('email')}"
+                                                 class="invalid-feedback text-capitalize" th:errors="*{email}"></div>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="form-floating mb-3">
                                     <div class="form-floating mb-3">
-                                        <input type="password" class="form-control" th:classappend="${#fields.hasErrors('password')} ? 'is-invalid'" id="floatingPassword" placeholder="password" th:field="*{password}">
+                                        <input type="password" class="form-control"
+                                               th:classappend="${#fields.hasErrors('password')} ? 'is-invalid'"
+                                               id="floatingPassword" placeholder="password" th:field="*{password}">
                                         <label for="floatingPassword">Password</label>
-                                        <div th:if="${#fields.hasErrors('password')}" class="invalid-feedback text-capitalize" th:errors="*{password}"></div>
+                                        <div th:if="${#fields.hasErrors('password')}"
+                                             class="invalid-feedback text-capitalize" th:errors="*{password}"></div>
                                     </div>
                                 </div>
 
                                 <div class="d-grid">
-                                    <button class="btn btn-lg btn-success btn-login text-uppercase fw-bold mb-2" type="submit">Create Account</button>
+                                    <button class="btn btn-lg btn-success btn-bold text-uppercase fw-bold mb-2"
+                                            type="submit">Create Account
+                                    </button>
                                     <div class="text-center">
                                         <a class="small" th:href="@{/login}">Already Member? <strong>Login</strong></a>
                                     </div>
@@ -87,7 +82,5 @@
         </div>
     </div>
 </main>
-
 </body>
-
 </html>

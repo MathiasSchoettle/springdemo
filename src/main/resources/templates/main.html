@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      lang="en"
+      data-bs-theme="dark"
+      layout:decorate="~{layout}">
+<head>
+    <title>Main Page</title>
+</head>
+
+<body layout:fragment="content">
+
+<header th:replace="~{fragments/header}"></header>
+
+<main class="content">
+    <div layout:fragment="main">
+        <!-- content -->
+    </div>
+</main>
+
+<footer class="w-100 py-4 flex-shrink-0 bg-secondary-subtle z-3 footer">
+    <div class="container py-2">
+        <!--/*@thymesVar id="currentYear" type="java.lang.Integer"*/-->
+        <p class="small text-muted mb-0" th:text="'&copy; Copyright ' + ${currentYear}"></p>
+    </div>
+</footer>
+
+</body>
+</html>
