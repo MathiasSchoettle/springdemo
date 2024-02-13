@@ -27,7 +27,6 @@ public class CustomerUserDetailsService implements UserDetailsService {
     }
 
     public void createNewUser(UserDto userDto) {
-        // TODO also persist email
         var user = new User(userDto.getUsername(), userDto.getEmail(), passwordEncoder.encode(userDto.getPassword()));
         userRepo.save(user);
     }

@@ -20,12 +20,13 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .authorizeHttpRequests(
-                        authorizeHttp -> authorizeHttp
-                                .requestMatchers(antMatcher("/error")).permitAll()
-                                .requestMatchers(antMatcher("/signup")).permitAll()
-                                .requestMatchers(antMatcher("/css/**")).permitAll()
-                                .requestMatchers(antMatcher("/")).permitAll()
+                .authorizeHttpRequests(authorizeHttp ->
+                        authorizeHttp
+                                .requestMatchers(
+                                        antMatcher("/signup"),
+                                        antMatcher("/css/**"),
+                                        antMatcher("/")
+                                ).permitAll()
                                 .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
@@ -33,12 +34,7 @@ public class SecurityConfig {
                         .defaultSuccessUrl("/", true)
                         .permitAll()
                 )
-                .logout(form -> form
-                        .logoutUrl("/logout")
-                        .logoutSuccessUrl("/")
-                        .permitAll()
-                )
-                .csrf(withDefaults())
+                .logout(withDefaults())
                 .build();
     }
 

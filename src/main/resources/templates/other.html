@@ -7,19 +7,19 @@
 
     <script>
         const getData = () => {
-            fetch('other/content').then(function (response) {
-                return response.text();
-            }).then(function (html) {
-                document.getElementById("myPlaceHolder").innerHTML += html;
-            }).catch(function (err) {
-                console.warn('Something went wrong.', err);
-            });
+            fetch('other/content', {method: 'get', redirect: 'error'})
+                .then(async response => response.text())
+                .then(html => {
+                    document.getElementById("myPlaceHolder").innerHTML += html;
+                })
+                .catch(() => {
+                    // on any redirect i.e. session time out
+                    window.location = '/';
+                })
         }
 
         const empty = () => {
-            console.log("ALARM");
             document.getElementById("myPlaceHolder").innerHTML = '';
-            console.log(document.getElementById("myPlaceHolder").innerHTML);
         }
     </script>
 </head>
