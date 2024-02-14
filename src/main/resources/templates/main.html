@@ -18,12 +18,7 @@
     </div>
 </main>
 
-<footer class="w-100 py-4 flex-shrink-0 bg-secondary-subtle z-3 footer">
-    <div class="container py-2">
-        <!--/*@thymesVar id="currentYear" type="java.lang.Integer"*/-->
-        <p class="small text-muted mb-0" th:text="'&copy; Copyright ' + ${currentYear}"></p>
-    </div>
-</footer>
+<footer th:replace="~{fragments/footer}"></footer>
 
 </body>
 </html>
